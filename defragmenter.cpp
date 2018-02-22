@@ -29,7 +29,7 @@ Defragmenter::Defragmenter(DiskDrive *diskDrive)
       tempNum++;
     }
   } //fill queue with empty spots
-  //cout<<"hey LISTEN"<<endl;
+  
 	for (int i = 0; i < diskDrive->getNumFiles(); i++) //for how many files are in the directory
 	{
 	  int blockID = diskDrive->directory[i].getFirstBlockID();//get first block ID of the directory.
@@ -46,7 +46,7 @@ Defragmenter::Defragmenter(DiskDrive *diskDrive)
           hash_table.remove(dummy);
           temp2 = temp;
           dummy.original = temp.current;
-         // cout<<"loop? "<<temp.original<<endl;
+         
         }//while 
         //}//if statement
         //else
@@ -87,11 +87,11 @@ Defragmenter::Defragmenter(DiskDrive *diskDrive)
         //DiskBlock_Number temp = hash_table.find(blockID);//finds the diskBlock in the hashTable
         //if (temp.original == blockID)//in case the hash Table returned null, checking if actually found
         //{
-        //cout<<"hi"<<endl;
+        
 	  }//while loop
 	  diskDrive->directory[i].setFirstBlockID(startingBlock);//So directory points to the correct diskBlock
 	  startingBlock = currentBlock;//starts next directory at the correct diskBlock
-    //cout<<"bye"<<endl;
+    
 	}//Operates under the assumption that the while loop is successful to some degree
 
 	//Take disk drive and look at first file in the directory and take FirstBlockID to find the diskBlock in the disk. 
